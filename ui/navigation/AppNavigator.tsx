@@ -6,9 +6,9 @@ import { NavigationRoutes } from "./NavigationRoutes";
 
 // Screen components
 import ProductListingScreen from "../../ui/screens/ProductListingScreen";
-import ProductDetailScreen from "../../ui/screens/ProductDetailScreen";
+import ProductDetailScreen from "../screens/ProductDetailScreen";
 import AddProductScreen from "../../ui/screens/AddProductScreen";
-import EditProductScreen from "../../ui/screens/EditProductScreen";
+import EditProductScreen from "../screens/EditProductScreen";
 import DeleteProductModal from "../../ui/screens/DeleteProductModal";
 
 const Stack = createStackNavigator<RootStackParamList>();

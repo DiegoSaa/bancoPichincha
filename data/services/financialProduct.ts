@@ -1,44 +1,41 @@
-import { inject } from "inversify";
-import { HttpManager } from "../network/http";
+import { UpdateProductParams } from "../../ui/hooks/useEditFinancialProduct";
 import { FinancialProduct } from "../models/FinancialProductModel";
+import { AxiosHttpManager } from "../network/http";
 import { FinancialProductCreationData } from "../repositories/FinancialProductCreation";
 
+const httpManager = new AxiosHttpManager();
+
 class FinancialProductService {
-  private static httpManager: HttpManager;
-
-  constructor(@inject("HttpManager") http: HttpManager) {
-    FinancialProductService.httpManager = http;
+  async getFinancialProducts(): Promise<FinancialProduct[]> {
+    const data = await httpManager.get("/bp/products");
+    return (
+      Array.isArray(data) && data.map((item) => FinancialProduct.fromJson(item))
+    );
   }
 
-  static async getFinancialProducts(): Promise<FinancialProduct[]> {
-    const data = await FinancialProductService.httpManager.get("/bp/products");
-    return data.map((item) => FinancialProduct.fromJson(item));
-  }
-
-  static async createFinancialProduct(
+  async createFinancialProduct(
     productData: FinancialProductCreationData
   ): Promise<FinancialProduct> {
-    const response = await this.httpManager.post("/bp/products", productData);
+    const response = await httpManager.post("/bp/products", productData);
     return FinancialProduct.fromJson(response);
   }
 
-  static async updateFinancialProduct(
-    productId: string,
-    productData: Partial<FinancialProductCreationData>
+  async updateFinancialProduct(
+    productData: UpdateProductParams
   ): Promise<FinancialProduct> {
-    const response = await this.httpManager.put(
-      `/bp/products/${productId}`,
-      productData
-    );
+    const response = await httpManager.put("/bp/products", productData);
     return FinancialProduct.fromJson(response);
   }
 
-  static async deleteFinancialProduct(productId: string): Promise<void> {
-    return this.httpManager.delete(`/bp/products/${productId}`);
+  async deleteFinancialProduct(productId: string): Promise<void> {
+    await httpManager.delete(`/bp/products/${productId}`);
   }
 
-  static async verifyProductId(productId: string): Promise<boolean> {
-    return this.httpManager.get(`/bp/products/verification?id=${productId}`);
+  async verifyProductId(productId: string): Promise<boolean> {
+    const response = await httpManager.get(
+      `/bp/products/verification?id=${productId}`
+    );
+    return typeof response === "boolean" && response;
   }
 }
 

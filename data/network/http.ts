@@ -1,4 +1,3 @@
-import { injectable } from "inversify";
 import axios, { AxiosInstance, AxiosResponse, AxiosError } from "axios";
 
 const BASE_URL =
@@ -13,7 +12,6 @@ export interface HttpManager {
   delete(url: string): Promise<any>;
 }
 
-@injectable()
 export class AxiosHttpManager implements HttpManager {
   private http: AxiosInstance;
 
