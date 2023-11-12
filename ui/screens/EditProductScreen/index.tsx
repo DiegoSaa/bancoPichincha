@@ -9,7 +9,7 @@ const EditProductScreen: React.FC<
   ScreenProps<NavigationRoutes.EditProduct>
 > = ({ route, navigation }) => {
   const { product } = route.params;
-  const { mutate: updateProduct, isError, error } = useEditFinancialProduct();
+  const { mutate: updateProduct } = useEditFinancialProduct();
 
   const initialValues = {
     id: product.id || "",
@@ -26,8 +26,8 @@ const EditProductScreen: React.FC<
       name: values.name,
       description: values.description,
       logo: values.logo,
-      date_release: values.date_release,
-      date_revision: values.date_revision,
+      date_release: new Date(values.date_release),
+      date_revision: new Date(values.date_revision),
     };
 
     updateProduct(updateParams);
