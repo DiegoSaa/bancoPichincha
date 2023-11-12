@@ -3,5 +3,4 @@ export const enum NavigationRoutes {
   ProductDetails = "ProductDetails",
   AddProduct = "AddProduct",
   EditProduct = "EditProduct",
-  DeleteProductModal = "DeleteProductModal",
 }

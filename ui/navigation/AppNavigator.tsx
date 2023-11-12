@@ -7,9 +7,8 @@ import { NavigationRoutes } from "./NavigationRoutes";
 // Screen components
 import ProductListingScreen from "../../ui/screens/ProductListingScreen";
 import ProductDetailScreen from "../screens/ProductDetailScreen";
-import AddProductScreen from "../../ui/screens/AddProductScreen";
+import AddProductScreen from "../screens/AddProductScreen";
 import EditProductScreen from "../screens/EditProductScreen";
-import DeleteProductModal from "../../ui/screens/DeleteProductModal";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -35,14 +34,6 @@ const AppNavigator = () => {
         name={NavigationRoutes.EditProduct}
         component={EditProductScreen}
         options={{ title: "BANCO PICHINCHA" }}
-      />
-      <Stack.Screen
-        name={NavigationRoutes.DeleteProductModal}
-        component={DeleteProductModal}
-        options={{
-          title: "Eliminar Producto",
-          presentation: "modal",
-        }}
       />
     </Stack.Navigator>
   );

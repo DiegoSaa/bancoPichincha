@@ -1,7 +1,7 @@
-import { UpdateProductParams } from "../../ui/hooks/useEditFinancialProduct";
 import { FinancialProduct } from "../models/FinancialProductModel";
 import { AxiosHttpManager } from "../network/http";
 import { FinancialProductCreationData } from "../repositories/FinancialProductCreation";
+import { UpdateProductParams } from "../repositories/FinancialProductEdit";
 
 const httpManager = new AxiosHttpManager();
 
@@ -28,7 +28,7 @@ class FinancialProductService {
   }
 
   async deleteFinancialProduct(productId: string): Promise<void> {
-    await httpManager.delete(`/bp/products/${productId}`);
+    await httpManager.delete(`/bp/products?id=${productId}`);
   }
 
   async verifyProductId(productId: string): Promise<boolean> {

@@ -1,4 +1,4 @@
-interface ConstructorParams {
+export interface ConstructorFinancialProduct {
   id: string;
   name: string;
   description: string;
@@ -22,7 +22,7 @@ export class FinancialProduct {
     logo,
     date_release,
     date_revision,
-  }: ConstructorParams) {
+  }: ConstructorFinancialProduct) {
     this.id = id;
     this.name = name;
     this.description = description;

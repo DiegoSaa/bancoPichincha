@@ -2,29 +2,12 @@
 import React from "react";
 import { View, TextInput, Button, Text } from "react-native";
 import { Formik } from "formik";
-import * as Yup from "yup";
 import { ScreenProps } from "../../navigation/navigationTypes";
 import { NavigationRoutes } from "../../navigation/NavigationRoutes";
 import { styles } from "./styles";
-import useEditFinancialProduct, {
-  UpdateProductParams,
-} from "../../hooks/useEditFinancialProduct";
-
-const ProductSchema = Yup.object().shape({
-  id: Yup.string()
-    .required("Required")
-    .min(3, "Too Short!")
-    .max(10, "Too Long!"),
-  name: Yup.string()
-    .required("Required")
-    .min(5, "Too Short!")
-    .max(100, "Too Long!"),
-  description: Yup.string()
-    .required("Required")
-    .min(10, "Too Short!")
-    .max(200, "Too Long!"),
-  // Add validations for other fields as needed
-});
+import useEditFinancialProduct from "../../hooks/useEditFinancialProduct";
+import { UpdateProductParams } from "../../../data/repositories/FinancialProductEdit";
+import { EditProductSchema } from "../../validation/EditProductValidation";
 
 const EditProductScreen: React.FC<
   ScreenProps<NavigationRoutes.EditProduct>
@@ -58,7 +41,7 @@ const EditProductScreen: React.FC<
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={ProductSchema}
+      validationSchema={EditProductSchema}
       onSubmit={handleUpdateProduct}
     >
       {({
@@ -91,8 +74,6 @@ const EditProductScreen: React.FC<
           {touched.description && errors.description && (
             <Text style={styles.error}>{errors.description.toString()}</Text>
           )}
-
-          {/* Include input fields for other properties */}
 
           <Button onPress={() => handleSubmit()} title='Update Product' />
         </View>

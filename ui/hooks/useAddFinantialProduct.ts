@@ -4,8 +4,10 @@ import {
   useQueryClient,
 } from "@tanstack/react-query";
 import FinancialProductService from "../../data/services/financialProduct";
-import { FinancialProduct } from "../../data/models/FinancialProductModel";
-import { UpdateProductParams } from "../../data/repositories/FinancialProductEdit";
+import {
+  ConstructorFinancialProduct,
+  FinancialProduct,
+} from "../../data/models/FinancialProductModel";
 import {
   EditProductMutationContext,
   FINANCIAL_PRODUCTS_QUERY_KEY,
@@ -13,10 +15,10 @@ import {
 
 const financialProductService = new FinancialProductService();
 
-const useEditFinancialProduct = (): UseMutationResult<
+const useAddFinancialProduct = (): UseMutationResult<
   void,
   Error,
-  UpdateProductParams,
+  ConstructorFinancialProduct,
   EditProductMutationContext
 > => {
   const queryClient = useQueryClient();
@@ -24,13 +26,13 @@ const useEditFinancialProduct = (): UseMutationResult<
   return useMutation<
     void,
     Error,
-    UpdateProductParams,
+    ConstructorFinancialProduct,
     EditProductMutationContext
   >({
-    mutationFn: async (updatedProductData: UpdateProductParams) => {
-      await financialProductService.updateFinancialProduct(updatedProductData);
+    mutationFn: async (newProductData: ConstructorFinancialProduct) => {
+      await financialProductService.createFinancialProduct(newProductData);
     },
-    onMutate: async (updatedProductData) => {
+    onMutate: async (newProductData) => {
       await queryClient.cancelQueries({
         queryKey: [FINANCIAL_PRODUCTS_QUERY_KEY],
       });
@@ -42,11 +44,7 @@ const useEditFinancialProduct = (): UseMutationResult<
       if (previousProducts) {
         queryClient.setQueryData<FinancialProduct[]>(
           [FINANCIAL_PRODUCTS_QUERY_KEY],
-          previousProducts.map((product) =>
-            product.id === updatedProductData.id
-              ? { ...product, ...updatedProductData }
-              : product
-          )
+          [...previousProducts, { ...newProductData, id: "temporary-id" }] // Temporarily add the new product
         );
       }
 
@@ -68,4 +66,4 @@ const useEditFinancialProduct = (): UseMutationResult<
   });
 };
 
-export default useEditFinancialProduct;
+export default useAddFinancialProduct;

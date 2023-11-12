@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, FlatList, TextInput } from "react-native";
+import { View, Text, FlatList, TextInput, Pressable } from "react-native";
 import { ScreenProps } from "../../navigation/navigationTypes";
 import { NavigationRoutes } from "../../navigation/NavigationRoutes";
 import useFinancialProducts from "../../hooks/useFinancialProducts";
 import { styles } from "./styles";
 import { renderItem } from "./components/render";
+import { StyledButton } from "../../components/StyledButton";
 
 const ProductListingScreen: React.FC<
   ScreenProps<NavigationRoutes.ProductListing>
@@ -36,6 +37,10 @@ const ProductListingScreen: React.FC<
         data={products}
         renderItem={({ item }) => renderItem({ item, navigation })}
         keyExtractor={(item) => item.id}
+      />
+      <StyledButton
+        onPress={() => navigation.navigate(NavigationRoutes.AddProduct)}
+        title='Agregar'
       />
     </View>
   );
