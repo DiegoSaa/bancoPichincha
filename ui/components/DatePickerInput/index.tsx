@@ -7,7 +7,7 @@ const DatePickerInput = ({ name, value, onChange, errors, touched }) => {
   const [show, setShow] = useState(false);
 
   const handleDateChange = (event, selectedDate) => {
-    setShow(false); // Close the picker after selection
+    setShow(false);
     if (selectedDate) {
       const formattedDate = selectedDate.toISOString().split("T")[0];
       onChange(name, formattedDate);
@@ -20,8 +20,8 @@ const DatePickerInput = ({ name, value, onChange, errors, touched }) => {
         style={styles.input}
         value={value}
         placeholder={name === "date_release" ? "Release Date" : "Revision Date"}
-        editable={false} // Make TextInput non-editable
-        onTouchStart={() => setShow(true)} // Open the picker on touch
+        editable={false}
+        onTouchStart={() => setShow(true)}
       />
       {touched && errors ? <Text style={styles.error}>{errors}</Text> : null}
 
@@ -31,7 +31,7 @@ const DatePickerInput = ({ name, value, onChange, errors, touched }) => {
           mode='date'
           display={Platform.OS === "ios" ? "spinner" : "default"}
           onChange={handleDateChange}
-          maximumDate={new Date()} // Optional: to restrict future dates
+          maximumDate={new Date()}
         />
       )}
     </View>

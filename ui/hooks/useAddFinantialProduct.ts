@@ -44,7 +44,7 @@ const useAddFinancialProduct = (): UseMutationResult<
       if (previousProducts) {
         queryClient.setQueryData<FinancialProduct[]>(
           [FINANCIAL_PRODUCTS_QUERY_KEY],
-          [...previousProducts, { ...newProductData, id: "temporary-id" }] // Temporarily add the new product
+          [...previousProducts, { ...newProductData, id: "temporary-id" }]
         );
       }
 

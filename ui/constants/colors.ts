@@ -3,4 +3,5 @@ export const COLORS = {
   YELLOW_PICHINCHA: "#fae001",
   RED_PICHINCHA: "#d00703",
   LIGTH_BLUE_PICHINCHA: "#eceff5",
+  LIGTH_GREY_PICHINCHA: "#e1e1e1",
 };

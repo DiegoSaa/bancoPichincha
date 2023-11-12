@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Pressable, Text } from "react-native";
+import { Image, Pressable, Text, View } from "react-native";
 import { FinancialProduct } from "../../../../data/models/FinancialProductModel";
 import { styles } from "../styles";
 import { NavigationRoutes } from "../../../navigation/NavigationRoutes";
@@ -22,8 +22,10 @@ export const renderItem = ({ item, navigation }: RenderItemProps) => (
       })
     }
   >
-    <Text style={styles.itemTextName}>{item.name}</Text>
-    <Text style={styles.itemTextId}>{`ID: ${item.id}`}</Text>
+    <View style={styles.textContainer}>
+      <Text style={styles.itemTextName}>{item.name}</Text>
+      <Text style={styles.itemTextId}>{`ID: ${item.id}`}</Text>
+    </View>
     <Image
       source={require("../../../assets/rightArrow.png")}
       style={styles.rigthIcon}

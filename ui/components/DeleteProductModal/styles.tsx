@@ -1,42 +1,45 @@
 import { StyleSheet } from "react-native";
+import { COLORS } from "../../constants/colors";
 
 export const styles = StyleSheet.create({
-  modalView: {
+  modalBackground: {
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
-    marginTop: 22,
-    width: "100%",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  headerContainer: {
+    alignSelf: "stretch",
+    borderBottomWidth: 1,
+    borderColor: COLORS.LIGTH_GREY_PICHINCHA,
+    padding: 15,
+    flexDirection: "row",
+    justifyContent: "flex-end",
   },
   modalContent: {
-    margin: 20,
     backgroundColor: "white",
-    height: "40%",
-    borderTopEndRadius: 20,
-    borderTopStartRadius: 20,
-    padding: 35,
-    alignItems: "center",
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    width: "100%",
+    maxHeight: "40%",
   },
+  generalContainer: {
+    paddingVertical: 15,
+  },
+  bodyContainer: {
+    paddingVertical: 15,
+    margin: 10,
+  },
+  textContainer: {},
   buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    marginTop: 15,
+    margin: 10,
   },
-  headerIcon: {
+  closeIcon: {
     width: 25,
     height: 25,
     resizeMode: "contain",
-    marginRight: 10,
   },
-  modalOverlay: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-  },
-
   closeButton: {
-    alignSelf: "flex-end",
-    padding: 10,
+    margin: 5,
   },
 });

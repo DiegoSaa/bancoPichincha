@@ -1,4 +1,3 @@
-// EditProductScreen.tsx
 import React from "react";
 import { View, TextInput, Button, Text } from "react-native";
 import { Formik } from "formik";
@@ -8,6 +7,9 @@ import { styles } from "./styles";
 import useEditFinancialProduct from "../../hooks/useEditFinancialProduct";
 import { UpdateProductParams } from "../../../data/repositories/FinancialProductEdit";
 import { EditProductSchema } from "../../validation/EditProductValidation";
+import { StyledButton } from "../../components/StyledButton";
+import { COLORS } from "../../constants/colors";
+import ProductForm from "../../components/ProductForm";
 
 const EditProductScreen: React.FC<
   ScreenProps<NavigationRoutes.EditProduct>
@@ -20,8 +22,8 @@ const EditProductScreen: React.FC<
     name: product.name || "",
     description: product.description || "",
     logo: product.logo || "",
-    date_release: product.date_release || "",
-    date_revision: product.date_revision || "",
+    date_release: product.date_release,
+    date_revision: product.date_revision,
   };
 
   const handleUpdateProduct = (values) => {
@@ -39,46 +41,11 @@ const EditProductScreen: React.FC<
   };
 
   return (
-    <Formik
+    <ProductForm
       initialValues={initialValues}
-      validationSchema={EditProductSchema}
-      onSubmit={handleUpdateProduct}
-    >
-      {({
-        handleChange,
-        handleBlur,
-        handleSubmit,
-        values,
-        errors,
-        touched,
-      }) => (
-        <View style={styles.container}>
-          <TextInput
-            style={styles.input}
-            onChangeText={handleChange("name")}
-            onBlur={handleBlur("name")}
-            value={values.name}
-            placeholder='Product Name'
-          />
-          {touched.name && errors.name && (
-            <Text style={styles.error}>{errors.name.toString()}</Text>
-          )}
-
-          <TextInput
-            style={styles.input}
-            onChangeText={handleChange("description")}
-            onBlur={handleBlur("description")}
-            value={values.description}
-            placeholder='Product Description'
-          />
-          {touched.description && errors.description && (
-            <Text style={styles.error}>{errors.description.toString()}</Text>
-          )}
-
-          <Button onPress={() => handleSubmit()} title='Update Product' />
-        </View>
-      )}
-    </Formik>
+      onSubmit={(values) => handleUpdateProduct(values)}
+      canEditId={false}
+    />
   );
 };
 

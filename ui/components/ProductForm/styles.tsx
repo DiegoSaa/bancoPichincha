@@ -11,7 +11,9 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "gray",
     padding: 10,
-    marginBottom: 20,
+  },
+  inputContainer: {
+    marginBottom: 15,
   },
   error: {
     fontSize: 10,
@@ -27,6 +29,8 @@ export const styles = StyleSheet.create({
   errorText: {
     fontSize: 12,
     color: "red",
+    margin: 0,
+    padding: 0,
   },
   disable: {
     backgroundColor: "#f0f0f0",

@@ -8,6 +8,7 @@ import { renderItem } from "./components/render";
 import { StyledButton } from "../../components/StyledButton";
 import { EmptyProducts } from "./components/EmptyProducts";
 import SkeletonLoader from "./components/SkeletonLoader";
+import { COLORS } from "../../constants/colors";
 
 const ProductListingScreen: React.FC<
   ScreenProps<NavigationRoutes.ProductListing>
@@ -44,7 +45,12 @@ const ProductListingScreen: React.FC<
           renderItem={({ item }) => renderItem({ item, navigation })}
           keyExtractor={(item) => item.id}
           ListHeaderComponent={() => (
-            <View style={{ height: 1, backgroundColor: "gray" }} />
+            <View
+              style={{
+                borderBottomWidth: 1,
+                borderColor: COLORS.LIGTH_GREY_PICHINCHA,
+              }}
+            />
           )}
           ListEmptyComponent={EmptyProducts}
         />

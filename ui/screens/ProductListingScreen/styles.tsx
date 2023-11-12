@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { COLORS } from "../../constants/colors";
 
 export const styles = StyleSheet.create({
   container: {
@@ -16,10 +17,16 @@ export const styles = StyleSheet.create({
   },
   itemContainer: {
     padding: 10,
-    borderBottomWidth: 1,
+    borderWidth: 1,
     borderRightWidth: 1,
     borderLeftWidth: 1,
-    borderBottomColor: "gray",
+    borderColor: COLORS.LIGTH_GREY_PICHINCHA,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  textContainer: {
+    flexDirection: "column",
   },
   itemTextName: {
     fontSize: 18,
@@ -32,9 +39,8 @@ export const styles = StyleSheet.create({
     marginBottom: 40,
   },
   rigthIcon: {
-    width: 25,
-    height: 25,
+    width: 20,
+    height: 20,
     resizeMode: "contain",
-    marginRight: 10,
   },
 });
