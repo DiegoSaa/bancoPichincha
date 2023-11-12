@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TextInput, Button, Text } from "react-native";
+import { View, TextInput, Text } from "react-native";
 import { Formik } from "formik";
 import { styles } from "./styles";
 import DatePickerInput from "../../components/DatePickerInput";
@@ -10,6 +10,7 @@ import { StyledButton } from "../../components/StyledButton";
 import useAddFinancialProduct from "../../hooks/useAddFinantialProduct";
 import { ScreenProps } from "../../navigation/navigationTypes";
 import { NavigationRoutes } from "../../navigation/NavigationRoutes";
+import { COLORS } from "../../constants/colors";
 
 const inputFields = [
   { name: "id", type: "input", placeholder: "ID" },
@@ -82,9 +83,16 @@ const AddProductScreen = ({
                 />
               )
             )}
-
-            <StyledButton onPress={handleSubmit} title='Add Product' />
-            <StyledButton onPress={resetForm} title='Reset Form' />
+            <View style={styles.buttonContainer}>
+              <StyledButton onPress={handleSubmit} title='Enviar' />
+            </View>
+            <View style={styles.buttonContainer}>
+              <StyledButton
+                onPress={resetForm}
+                title='Reiniciar'
+                color={COLORS.LIGTH_BLUE_PICHINCHA}
+              />
+            </View>
           </KeyboardAwareScrollView>
         </View>
       )}

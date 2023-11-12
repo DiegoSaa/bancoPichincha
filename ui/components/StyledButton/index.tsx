@@ -1,7 +1,19 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { COLORS } from "../../constants/colors";
 
-export const StyledButton = ({ onPress, title }) => (
-  <View style={styles.container}>
+type StyledButtonType = {
+  onPress: () => void;
+  title: string;
+  color?: string;
+};
+
+export const StyledButton = ({ onPress, title, color }: StyledButtonType) => (
+  <View
+    style={[
+      styles.container,
+      { backgroundColor: color ?? COLORS.YELLOW_PICHINCHA },
+    ]}
+  >
     <Pressable style={styles.addButton} onPress={onPress}>
       <Text style={styles.addButtonText}>{title}</Text>
     </Pressable>
@@ -9,21 +21,15 @@ export const StyledButton = ({ onPress, title }) => (
 );
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 20,
-  },
+  container: {},
   addButton: {
-    backgroundColor: "yellow",
     alignItems: "center",
     justifyContent: "center",
-    padding: 10,
-    marginTop: 10,
-    borderRadius: 5,
+    padding: 15,
     borderWidth: 0,
   },
   addButtonText: {
-    color: "black",
+    color: COLORS.BLUE_PICHINCHA,
     fontSize: 16,
   },
 });

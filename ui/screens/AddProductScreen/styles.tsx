@@ -5,12 +5,13 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     padding: 20,
+    backgroundColor: "white",
   },
   input: {
     borderWidth: 1,
     borderColor: "gray",
     padding: 10,
-    marginBottom: 70,
+    marginBottom: 20,
   },
   error: {
     fontSize: 10,
@@ -19,5 +20,8 @@ export const styles = StyleSheet.create({
   datePicker: {
     width: 200,
     margin: 10,
+  },
+  buttonContainer: {
+    marginBottom: 15,
   },
 });

@@ -1,5 +1,5 @@
 import React from "react";
-import { Pressable, Text } from "react-native";
+import { Image, Pressable, Text } from "react-native";
 import { FinancialProduct } from "../../../../data/models/FinancialProductModel";
 import { styles } from "../styles";
 import { NavigationRoutes } from "../../../navigation/NavigationRoutes";
@@ -22,6 +22,11 @@ export const renderItem = ({ item, navigation }: RenderItemProps) => (
       })
     }
   >
-    <Text style={styles.itemText}>{item.name}</Text>
+    <Text style={styles.itemTextName}>{item.name}</Text>
+    <Text style={styles.itemTextId}>{`ID: ${item.id}`}</Text>
+    <Image
+      source={require("../../../assets/rightArrow.png")}
+      style={styles.rigthIcon}
+    />
   </Pressable>
 );
