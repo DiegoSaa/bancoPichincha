@@ -1,31 +1,47 @@
-### Banco pichincha
+### Banco Pichincha
 
 This is a React Native project using Expo, designed for the development of a mobile application. It's set up with a range of dependencies for navigation, state management, form handling, and more.
 
-Getting Started
+#### Getting Started
+
 To get started with this project, clone the repository and install the dependencies.
 
-Prerequisites
-Node.js
-npm
-Expo CLI
-Installing
+#### Prerequisites
+
+- Node.js
+- npm
+- Expo CLI
+
+#### Installing
+
 First, clone the repository:
 
-git clone [your-repo-link]
+```bash
+git clone https://github.com/DiegoSaa/bancoPichincha
+```
+
 Navigate into the project directory:
 
+```bash
 cd pruebabancopichincha
-
-Install the dependencies:
-npm install
+```
 
 To start the application, you can use the following command:
+
+```bash
 npm start
+```
 
-# or
+To run the test, you can use the following command:
 
-yarn test --coverage
+```bash
+npm run test
+```
+
+```bash
+npm run test:coverage
+```
+
 This command runs the tests defined in the project and generates a coverage report.
 
 Built With

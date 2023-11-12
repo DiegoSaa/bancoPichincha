@@ -47,9 +47,9 @@ export class AxiosHttpManager implements HttpManager {
 
   private _handleError = (error: AxiosError): Promise<AxiosError> => {
     if (error.response) {
-      Alert.alert("Error", error.message);
+      console.log("Error: ", error.response);
     } else {
-      Alert.alert("Error desconocido");
+      console.log("Error desconocido:");
     }
 
     return Promise.reject(error);

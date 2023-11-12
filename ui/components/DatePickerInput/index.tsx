@@ -35,6 +35,7 @@ const DatePickerInput = ({ name, value, onChange, errors, touched }) => {
           display={Platform.OS === "ios" ? "spinner" : "default"}
           onChange={handleDateChange}
           maximumDate={new Date()}
+          testID='dateTimePicker'
         />
       )}
     </View>
