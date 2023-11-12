@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1699797225723" clover="3.2.0">
-  <project timestamp="1699797225723" name="All files">
+<coverage generated="1699800306817" clover="3.2.0">
+  <project timestamp="1699800306817" name="All files">
     <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2" elements="9" coveredelements="9" complexity="0" loc="7" ncloc="7" packages="1" files="1" classes="1"/>
     <file name="FinancialProductModel.ts" path="/Users/diegofernandosaavedralozano/Desktop/PruebaTecnica/pruebaBancoPichincha/data/models/FinancialProductModel.ts">
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>

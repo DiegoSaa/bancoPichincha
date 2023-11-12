@@ -3,8 +3,8 @@ export interface ConstructorFinancialProduct {
   name: string;
   description: string;
   logo: string;
-  date_release: Date;
-  date_revision: Date;
+  date_release: Date | string;
+  date_revision: Date | string;
 }
 
 export class FinancialProduct {
@@ -12,8 +12,8 @@ export class FinancialProduct {
   public name: string;
   public description: string;
   public logo: string;
-  public date_release: Date;
-  public date_revision: Date;
+  public date_release: Date | string;
+  public date_revision: Date | string;
 
   constructor({
     id,

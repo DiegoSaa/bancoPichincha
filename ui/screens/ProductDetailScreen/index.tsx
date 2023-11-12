@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Button, Image } from "react-native";
+import { View, Text, Image } from "react-native";
 import { ScreenProps } from "../../navigation/navigationTypes";
 import { NavigationRoutes } from "../../navigation/NavigationRoutes";
 import { styles } from "./styles";
@@ -13,7 +13,7 @@ const ProductDetailScreen = ({
   navigation,
 }: ScreenProps<NavigationRoutes.ProductDetails>) => {
   const { productId } = route.params;
-  const { data: products, isLoading, isError } = useFinancialProducts();
+  const { data: products } = useFinancialProducts();
 
   const [isModalDeleteVisible, setIsModalDeleteVisible] = useState(false);
 
@@ -27,6 +27,16 @@ const ProductDetailScreen = ({
     );
   }
 
+  const dateReleaseString =
+    typeof product?.date_release === "string"
+      ? product?.date_release
+      : product?.date_release?.toDateString();
+
+  const dateRevisionString =
+    typeof product?.date_revision === "string"
+      ? product?.date_revision
+      : product?.date_revision?.toDateString();
+
   return (
     <View style={styles.container}>
       <Text style={styles?.id}>{`ID: ${product?.id}`}</Text>
@@ -38,14 +48,8 @@ const ProductDetailScreen = ({
         {product?.logo && (
           <Image source={{ uri: product.logo }} style={styles.logoContainer} />
         )}
-        <DetailRow
-          label='Release Date'
-          value={product?.date_release?.toDateString()}
-        />
-        <DetailRow
-          label='Revision Date'
-          value={product?.date_revision?.toDateString()}
-        />
+        <DetailRow label='Release Date' value={dateReleaseString} />
+        <DetailRow label='Revision Date' value={dateRevisionString} />
       </View>
       {/* Render other product details */}
       <View style={styles.buttonContainer}>
@@ -53,7 +57,14 @@ const ProductDetailScreen = ({
           title='Editar'
           onPress={() =>
             navigation.navigate(NavigationRoutes.EditProduct, {
-              product,
+              product: {
+                id: product.id,
+                name: product.name,
+                description: product.description,
+                logo: product.logo,
+                date_release: dateReleaseString,
+                date_revision: dateRevisionString,
+              },
             })
           }
           color={COLORS.LIGTH_BLUE_PICHINCHA}

@@ -14,20 +14,23 @@ const DatePickerInput = ({ name, value, onChange, errors, touched }) => {
     }
   };
 
+  const dateValue = value ? new Date(value) : new Date();
+
   return (
     <View>
       <TextInput
         style={styles.input}
         value={value}
-        placeholder={name === "date_release" ? "Release Date" : "Revision Date"}
+        placeholder={name === "date_release" ? "Release date" : "Revision date"}
         editable={false}
         onTouchStart={() => setShow(true)}
+        accessibilityRole='button'
       />
       {touched && errors ? <Text style={styles.error}>{errors}</Text> : null}
 
       {show && (
         <DateTimePicker
-          value={new Date(value) || new Date()}
+          value={dateValue}
           mode='date'
           display={Platform.OS === "ios" ? "spinner" : "default"}
           onChange={handleDateChange}

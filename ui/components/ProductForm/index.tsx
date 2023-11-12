@@ -44,8 +44,11 @@ const ProductForm = ({ initialValues, onSubmit, canEditId = true }) => {
               }
 
               let inputValue = values[field.name];
-              if (field.name === "date_revision") {
-                inputValue = values[field.name].toLocaleDateString();
+              if (
+                field.name === "date_revision" &&
+                values[field.name] instanceof Date
+              ) {
+                inputValue = values[field.name].toDateString();
               }
               const errorMessage = errors[field.name];
               const displayError =
