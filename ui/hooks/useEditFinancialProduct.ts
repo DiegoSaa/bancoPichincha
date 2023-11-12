@@ -10,6 +10,7 @@ import {
   EditProductMutationContext,
   FINANCIAL_PRODUCTS_QUERY_KEY,
 } from "../context/query";
+import { Alert } from "react-native";
 
 const financialProductService = new FinancialProductService();
 
@@ -53,6 +54,7 @@ const useEditFinancialProduct = (): UseMutationResult<
       return { previousProducts };
     },
     onError: (error, variables, context) => {
+      Alert.alert("Error al editar: ", error.message);
       if (context?.previousProducts) {
         queryClient.setQueryData(
           [FINANCIAL_PRODUCTS_QUERY_KEY],

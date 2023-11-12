@@ -1,9 +1,10 @@
 import axios, { AxiosInstance, AxiosResponse, AxiosError } from "axios";
+import { Alert } from "react-native";
 
 const BASE_URL =
   "https://tribu-ti-staffing-desarrollo-afangwbmcrhucqfh.z01.azurefd.net/ipf-msa-productosfinancieros";
 
-const USER_ID = "1"; //1171997
+const USER_ID = "1171997";
 
 export interface HttpManager {
   get(url: string): Promise<any>;
@@ -46,9 +47,9 @@ export class AxiosHttpManager implements HttpManager {
 
   private _handleError = (error: AxiosError): Promise<AxiosError> => {
     if (error.response) {
-      console.error("HTTP Error:", error.response.status);
+      Alert.alert("Error", error.message);
     } else {
-      console.error("Network or unknown error occurred");
+      Alert.alert("Error desconocido");
     }
 
     return Promise.reject(error);

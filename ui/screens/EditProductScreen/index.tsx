@@ -1,14 +1,8 @@
 import React from "react";
-import { View, TextInput, Button, Text } from "react-native";
-import { Formik } from "formik";
 import { ScreenProps } from "../../navigation/navigationTypes";
 import { NavigationRoutes } from "../../navigation/NavigationRoutes";
-import { styles } from "./styles";
 import useEditFinancialProduct from "../../hooks/useEditFinancialProduct";
 import { UpdateProductParams } from "../../../data/repositories/FinancialProductEdit";
-import { EditProductSchema } from "../../validation/EditProductValidation";
-import { StyledButton } from "../../components/StyledButton";
-import { COLORS } from "../../constants/colors";
 import ProductForm from "../../components/ProductForm";
 
 const EditProductScreen: React.FC<

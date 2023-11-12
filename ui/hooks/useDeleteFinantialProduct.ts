@@ -9,6 +9,7 @@ import {
   EditProductMutationContext,
   FINANCIAL_PRODUCTS_QUERY_KEY,
 } from "../context/query";
+import { Alert } from "react-native";
 
 const financialProductService = new FinancialProductService();
 
@@ -43,6 +44,7 @@ const useDeleteFinancialProduct = (): UseMutationResult<
       return { previousProducts };
     },
     onError: (error, productId, context) => {
+      Alert.alert("Error al borrar: ", error.message);
       if (context?.previousProducts) {
         queryClient.setQueryData(
           [FINANCIAL_PRODUCTS_QUERY_KEY],

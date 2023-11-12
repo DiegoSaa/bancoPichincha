@@ -1,16 +1,8 @@
 import React from "react";
-import { View, TextInput, Text } from "react-native";
-import { Formik } from "formik";
-import { styles } from "./styles";
-import DatePickerInput from "../../components/DatePickerInput";
-import { AddProductSchema } from "../../validation/AddProductValidation";
 import { ConstructorFinancialProduct } from "../../../data/models/FinancialProductModel";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { StyledButton } from "../../components/StyledButton";
 import useAddFinancialProduct from "../../hooks/useAddFinantialProduct";
 import { ScreenProps } from "../../navigation/navigationTypes";
 import { NavigationRoutes } from "../../navigation/NavigationRoutes";
-import { COLORS } from "../../constants/colors";
 import ProductForm from "../../components/ProductForm";
 
 const inputFields = [
